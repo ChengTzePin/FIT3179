@@ -11,13 +11,15 @@
       "field": "2010",
       "type": "quantitative",
       "title": "Year 2010",
-      "scale": {"type": "linear", "domain": [1, 100]}
+      "axis": {"tickCount": 10},
+      "scale": {"type": "linear", "domain": [40, 90]}
     },
     "y": {
       "field": "2019",
       "type": "quantitative",
       "title": "Year 2019",
-      "scale": {"type": "linear", "domain": [1, 100]}
+      "axis": {"tickCount": 10},
+      "scale": {"type": "linear", "domain": [40, 90]}
     }
   },
   "layer": [
