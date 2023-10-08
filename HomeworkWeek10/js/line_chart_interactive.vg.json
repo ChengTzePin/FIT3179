@@ -1,0 +1,104 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 600,
+  "title": "Antiretoviral Therapy Coverage Among People Living With HIV of Each Region",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ACTP2002/FIT3179/main/HomeworkWeek10/data/art_coverage.csv"
+  },
+  "params": [
+    {
+      "name": "Year",
+      "value": 2020,
+      "bind": {
+        "input": "range",
+        "min": 2001,
+        "max": 2020,
+        "step": 1,
+        "name": "Year "
+      }
+    },
+    {
+      "name": "Region_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Latin America and Caribbean",
+          "Middle East and North Africa",
+          "South Asia",
+          "Sub-Saharan Africa",
+          "World"
+        ],
+        "labels": [
+          "Show All",
+          "Latin America and Carribbean",
+          "Middle East and North Africa",
+          "South Asia",
+          "Sub-Saharan Africa",
+          "World"
+        ],
+        "name": "Region Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Region_selection == null || datum.Region == Region_selection"
+    },
+    {"filter": "datum.Year <= Year"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "Coverage",
+      "type": "quantitative",
+      "title": "Coverage(%)"
+    }
+  },
+  "layer": [
+    {
+      "mark":{
+        "type": "line",
+        "point": true
+      },      
+      "encoding": {
+        "color": {
+          "field": "Region",
+          "type": "nominal"
+        },
+        "opacity": {"value": 0.6},
+        "tooltip": [
+          {"field": "Region", "type": "nominal"},
+          {"field": "Year", "type": "ordinal"},
+          {"field": "Coverage", "type": "quantitative", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Region", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Year'] == '2020'",
+            "value": 1
+          },
+          "value": 0
+        }
+        }
+      }
+  ]
+}
