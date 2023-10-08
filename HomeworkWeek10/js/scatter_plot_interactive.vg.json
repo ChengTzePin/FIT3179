@@ -11,12 +11,14 @@
       "field": "2010",
       "type": "quantitative",
       "title": "Year 2010",
+      "axis": {"tickCount": 6},
       "scale": {"type": "log", "domain": [1, 100]}
     },
     "y": {
       "field": "2019",
       "type": "quantitative",
       "title": "Year 2019",
+      "axis": {"tickCount": 6},
       "scale": {"type": "log", "domain": [1, 100]}
     }
   },
