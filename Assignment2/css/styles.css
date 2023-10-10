@@ -11,6 +11,10 @@
     overflow: hidden;
 }
 
+canvas {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
 p {
     display: block;
     margin-block-start: 1em;
