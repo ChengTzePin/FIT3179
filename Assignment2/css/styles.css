@@ -21,6 +21,13 @@
     padding-bottom: 40px;
 }
 
+.visualization-description {
+    font-size: 15px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
 .description-container {
     flex: 1;
     display: flex;
