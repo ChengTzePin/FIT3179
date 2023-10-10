@@ -11,6 +11,24 @@
     overflow: hidden;
 }
 
+.visualization-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #ecf0f1;
+    padding-bottom: 40px;
+}
+
+.description-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 40px;
+}
+
 canvas {
     overflow-clip-margin: content-box;
     overflow: clip;
