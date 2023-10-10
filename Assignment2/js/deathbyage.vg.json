@@ -1,0 +1,109 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "title": "Death Rates of HIV By Age Group of Each WHO Region",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ACTP2002/FIT3179/main/Assignment2/data/hiv-death-rates-by-age.csv"
+    },
+    "params": [
+      {
+        "name": "Year",
+        "value": 2019,
+        "bind": {
+          "input": "range",
+          "min": 1990,
+          "max": 2019,
+          "step": 1,
+          "name": "Year "
+        }
+      },
+      {
+        "name": "Region_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "African Region (WHO)",
+            "Eastern Mediterranean Region (WHO)",
+            "European Region (WHO)",
+            "Region of the Americas (WHO)",
+            "South-East Asia Region (WHO)",
+            "Western Pacific Region (WHO)",
+            "World"
+          ],
+          "labels": [
+            "Show All",
+            "African Region",
+            "Eastern Mediterranean",
+            "European Region",
+            "Region of the Americas",
+            "South-East Asia Region",
+            "Western Pacific Region",
+            "World"
+          ],
+          "name": "Region Selection: "
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "Region_selection == null || datum.Region == Region_selection"
+      },
+      {"filter": "datum.Year == Year"},
+      {"fold":["Under 5", "5-14 years", "15-49 years", "50-69 years", "70+ years", "All Ages"]}
+
+    ],
+    "encoding": {
+      "x": {
+        "field": "Region",
+        "type": "nominal",
+        "title": "Region"
+      },
+      "y": {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Death Rates per 1000 population"
+      }
+    },
+    "layer": [
+      {
+        "mark": "bar",    
+        "encoding": {
+          "color": {
+            "field": "key",
+            "title" : "Age Group",
+            "type": "nominal"
+          },
+          "opacity": {"value": 0.6},
+          "tooltip": [
+            {"field": "Region", "type": "nominal"},
+            {"field": "Year", "type": "ordinal"},
+            {"field": "All Ages", "type": "quantitative", "format": ","}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "middle",
+          "dx": -12,
+          "dy": -20,
+          "fontSize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {"field": "Region", "type": "nominal"},
+          "color": {"value": "black"},
+          "opacity": {
+            "condition": {
+              "test": "datum['Year'] == '1997' & datum['Region'] == 'South-East Asia Region (WHO)'",
+              "value": 1
+            },
+            "value": 0
+          }
+          }
+        }
+    ]
+  }
