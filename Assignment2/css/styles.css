@@ -11,7 +11,11 @@
     overflow: hidden;
 }
 
-
+.vega-embed {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+}
 .visualization {
     flex: 2;
     width: 100%;
