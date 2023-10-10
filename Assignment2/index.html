@@ -21,9 +21,6 @@
     </div>
     <div class="pure-u-1-2" id="prevalence"></div>
     <div class="pure-u-1-2" id="newcase"></div>
-    <div class="pure-u-1-2" id="death"></div>
-    <div class="pure-u-1-2" id="deathbyage"></div>
-    <div class="pure-u-1-2" id="deathaverted"></div>
     
   </div>
   
@@ -41,20 +38,7 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  var vis3 = "Assignment2/js/death.vg.json";
-  vegaEmbed('#death', vis3, {"actions": false}).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
 
-  var vis4 = "deathbyage.vg.json";
-  vegaEmbed('#deathbyage', vis4, {"actions": false}).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
-
-  var vis5 = "Assignment2/js/deathaverted.vg.json";
-  vegaEmbed('#deathaverted', vis5, {"actions": false}).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
 
   
 </script>
