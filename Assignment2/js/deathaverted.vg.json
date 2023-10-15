@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
+    "width": 500,
     "height": 600,
     "title": "Relationship Between Deaths Averted by Antiretroviral Therapy and AIDS-related deaths in Each UNAIDS Region",
     "data": {"url": "https://raw.githubusercontent.com/ACTP2002/FIT3179/main/Assignment2/data/hivaids-deaths-and-averted-due-to-art.csv"},
