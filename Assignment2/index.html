@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Global HIV Statistics</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  
+  
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+
+  
+  
+</head>
+<body>
+  <div class = "container">
+    <h1>Global HIV Statistics</h1>
+    <p class="introduction">
+      HIV is a type of virus that can caused Acquired Immunodeficiency Syndrome (AIDS).
+      AIDS is a type of disease that spread by contact with certain bodily fluids of a person with HIV,
+      mostly through unprotected sex or sharing injection drug equipment, some also
+      through mother-to-child when a pregnant woman is HIV positive, that caused by
+      Human Immunodeficiency Virus (HIV), which is a virus that attacks cells that
+      help the body fight infection with no cure but can be suppressed through an
+      effective treatment called antiretroviral therapy (ART).
+    <div class="visualization-section">
+      <div class="description-container">
+        <div class="description-title">How many new cases?</div>
+          <p class="visualization-description">
+            Over the time, the trend shows that, for <strong>almost every continent</strong>, the new cases per 1000 population <strong>increased</strong>. However, surprisingly, for the most affected continent, which is <strong>Africa</strong>, 
+            the trend shows that the new cases per 1000 population <strong>dropped</strong>.
+          </p>
+      </div>
+      
+      <div class="visualization" id="newcase"></div>
+    </div>
+
+    <div class="visualization-section">
+      <div class="description-container">
+        <div class="description-title">How many are there in total?</div>
+          <p class="visualization-description">
+            The graph shows that the curve of the prevalence of HIV becomes <strong>smoother</strong> in year 2000 after a steep increase since <strong>1990</strong>. However, the curve become <strong>steeper</strong> again after year <strong>2008</strong>. 
+            Besides that, <span style = "color: blue;">Africa Region</span> has the <strong>highest</strong> prevalence of HIV at all time.
+      </div>
+      <div class="visualization" id="prevalence"></div>
+    </div>
+
+    <div class="visualization-section">
+      <div class="description-container">
+        <div class="description-title">How many deaths?</div>
+          <p class="visualization-description">
+            The graph shows that the trend of number of death cases of HIV having a <strong>similar trend</strong> with the prevalence of HIV in the <strong>1990s</strong>. However, the death cases reach its <strong>peak at 
+              around 2004 and 2005</strong>, then it started to <strong>decrease</strong> after that.  
+          </p>
+      </div>
+      <div class="visualization" id="death"></div>
+    </div>
+
+    <div class="visualization-section">
+      <div class="description-container">
+        <div class="description-title">Which age group affected the most?</div>
+        <p class="visualization-description">
+          The graph once again shows that <strong>Africa region</strong> is once again the <strong>most affected</strong> region by HIV. It has not only the <strong>highest absolute death cases</strong> but also the <strong>highest death
+          rates per 1000 population</strong> . The graph also shows that <span style="color: blue;">15-49 years</span> and <span style="color: red;">50-69 years</span> are the 2 most 
+          affected age groups by HIV. Over time, the death rates of <span style="color: goldenrod;">under 5</span> is getting lower while <span style="color: red;">50-69 years</span> is getting higher.
+      </p>
+      
+      </div>
+      <div class="visualization" id="deathbyage"></div>
+    </div>
+
+    <div class="visualization-section">
+      <div class="description-container">
+        <div class="description-title">Did ART saved more lives than HIV killed?</div>
+        <p class="visualization-description">
+          In year 2016, in <span style="color: red;">Eastern Europe and Central Asia</span>, Antiretroviral therapy has <strong>less effect</strong> where the deaths are still 
+          <strong>more</strong> than deaths averted. However, surprisingly, for <span style="color: orange;">East and Southern Africa</span>, most of the countries are having deaths numbers <strong>lower</strong> than deaths averted. Overall, from year 2010 to 2016, the trend shows that ART is gradually improving on saving lives from HIV.
+      </p>
+      </div>
+      <div class="visualization" id="deathaverted"></div>
+    </div>
+    <h3>This is a data visualization project from <a href="https://github.com/ACTP2002/FIT3179">CHENG TZE PIN</a> for FIT3179.</h3>
+    <h3>Data Retrieved from <a href="https://www.who.int/">World Health Organization</a> and <a href="https://ourworldindata.org/">Our World in Data</a>.</h3>
+
+  </div>
+    
+
+<script type="text/javascript">
+
+
+  var vis1 = "js/newcase.vg.json";
+  vegaEmbed('#newcase', vis1, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  
+  var vis2 = "js/prevalence.vg.json";
+  vegaEmbed('#prevalence', vis2, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var vis3 = "js/death.vg.json";
+  vegaEmbed('#death', vis3, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var vis4 = "js/deathbyage.vg.json";
+  vegaEmbed('#deathbyage', vis4, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var vis5 = "js/deathaverted.vg.json";
+  vegaEmbed('#deathaverted', vis5, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+
+
+  
+</script>
+
+</body>
+</html>
+
