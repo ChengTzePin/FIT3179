@@ -1,0 +1,108 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 400,
+    "title": "Number of Death of HIV in Each WHO Region",
+    "data": {
+      "url": "https://raw.githubusercontent.com/ChengTzePin/FIT3179/main/Assignment2/data/deaths-and-new-cases-of-hiv.csv"
+    },
+    "params": [
+      {
+        "name": "Year",
+        "value": 2019,
+        "bind": {
+          "input": "range",
+          "min": 1991,
+          "max": 2019,
+          "step": 1,
+          "name": "Year: "
+        }
+      },
+      {
+        "name": "Region_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "African Region",
+            "Eastern Mediterranean Region",
+            "European Region",
+            "Region of the Americas",
+            "South-East Asia Region",
+            "Western Pacific Region",
+            "World"
+          ],
+          "labels": [
+            "Show All",
+            "African Region",
+            "Eastern Mediterranean",
+            "European Region",
+            "Region of the Americas",
+            "South-East Asia Region",
+            "Western Pacific Region",
+            "World"
+          ],
+          "name": "Region Selection: "
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "Region_selection == null || datum.Region == Region_selection"
+      },
+      {"filter": "datum.Year <= Year"}
+    ],
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      "y": {
+        "field": "Deaths",
+        "type": "quantitative",
+        "title": "Deaths"
+      }
+    },
+    "layer": [
+      {
+        "mark":{
+          "type": "line",
+          "point": true
+        },      
+        "encoding": {
+          "color": {
+            "field": "Region",
+            "title": "WHO Region",
+            "type": "nominal"
+          },
+          "opacity": {"value": 0.6},
+          "tooltip": [
+            {"field": "Region", "type": "nominal"},
+            {"field": "Year", "type": "ordinal"},
+            {"field": "Deaths", "type": "quantitative", "format": ","}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "fontSize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {"value":"In year 1997, South-East Asia overtakes Region of the Americas in the number of death of HIV."},
+          "color": {"value": "black"},
+          "opacity": {
+            "condition": {
+              "test": "datum['Year'] >= '1997' & Region_selection ==  null",
+              "value": 1
+            },
+            "value": 0
+          },
+          "x": {"value": 250},
+          "y": {"value": 350}
+          }
+        }
+    ]
+  }

@@ -1,0 +1,119 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 480,
+    "height": 400,
+    "title": "Relationship Between Deaths Averted by Antiretroviral Therapy and AIDS-related deaths in Each Country",
+    "data": {"url": "https://raw.githubusercontent.com/ChengTzePin/FIT3179/main/Assignment2/data/death_averted_country.csv"},
+    "params": [
+        {
+          "name": "Year",
+          "value": 2016,
+          "bind": {
+            "input": "range",
+            "min": 2010,
+            "max": 2016,
+            "step": 1,
+            "name": "Year: "
+          }
+        },
+        {
+            "name": "Region_selection",
+            "bind": { 
+              "input": "select",
+              "options": [
+                null,
+                "Asia and Pacific",
+                "East and Southern Africa",
+                "Eastern Europe and Central Asia",
+                "Latin America and the Caribbean",
+                "North Africa and Middle East",
+                "West and Central Africa",
+                "Western and Central Europe and North America"
+              ],
+              "labels": [
+                "Show All",
+                "Asia and Pacific",
+                "East and Southern Africa",
+                "Eastern Europe and Central Asia",
+                "Latin America and the Caribbean",
+                "North Africa and Middle East",
+                "West and Central Africa",
+                "Western and Central Europe and North America"
+              ],
+              "name": "Region Selection: "
+            }
+          }
+      ],
+    "transform": [
+        {
+            "filter": "Region_selection == null || datum.Region == Region_selection"
+        },
+        {"filter": "datum.Year == Year"}
+      ],
+    "encoding": {
+      "x": {"field": "Deaths averted", "type": "quantitative", "title": "Deaths Averted (Person)"},
+      "y": {"field": "AIDS-related deaths", "type": "quantitative", "title": "AIDS-related Deaths (Person)"},
+      "color":{"field": "Region", "type": "nominal"}
+    },
+    "layer": [
+        {
+          "mark":"point",      
+          "encoding": {
+            "color": {
+              "field": "Region",
+              "title": "UNAIDS Region",
+              "type": "nominal"
+            },
+            "opacity": {"value": 0.6},
+            "tooltip": [
+              {"field": "Country", "type": "nominal"},
+              {"field": "Region", "type": "nominal"},
+              {"field": "AIDS-related deaths", "type": "quantitative"},
+              {"field": "Deaths averted", "type": "quantitative"}
+            ]
+          }
+        },
+        {
+          "mark": "line",
+          "encoding": {
+            "x": {"field": "Deaths averted", "type": "quantitative"},
+            "y": {"field": "Deaths averted", "type": "quantitative"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "middle",
+            "dx": 0,
+            "dy": 0,
+            "fontSize": 11.5,
+            "fontStyle": "italic"
+          },
+          "encoding": {
+            "text": {"field": "Region", "type": "nominal"},
+            "color": {"value": "black"},
+            "opacity": {
+              "condition": {
+                "test": "datum['Year'] == '1997' & datum['Region'] == 'South-East Asia Region (WHO)'",
+                "value": 1
+              },
+              "value": 0
+            }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "fontSize": 11.5,
+              "fontStyle": "italic"
+            },
+            "encoding": {
+              "text": {"value":"Dots below the line indicates deaths averted are more than deaths, vice versa"},
+              "color": {"value": "black"},
+              "x": {"value": 210},
+              "y": {"value": 20}
+              }
+            }
+      ]
+  }
