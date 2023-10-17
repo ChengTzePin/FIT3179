@@ -84,23 +84,21 @@
       {
         "mark": {
           "type": "text",
-          "align": "right",
-          "baseline": "middle",
-          "dx": -12,
-          "dy": -20,
           "fontSize": 11.5,
           "fontStyle": "italic"
         },
         "encoding": {
-          "text": {"field": "Region", "type": "nominal"},
+          "text": {"value": "The most affected group is 50-69 years"},
           "color": {"value": "black"},
           "opacity": {
             "condition": {
-              "test": "datum['Year'] == '1997' & datum['Region'] == 'South-East Asia Region (WHO)'",
+              "test": "datum['Region'] == 'African Region (WHO)'",
               "value": 1
             },
             "value": 0
-          }
+          },
+          "x": {"value": 250},
+          "y": {"value": 250}
           }
         }
     ]
